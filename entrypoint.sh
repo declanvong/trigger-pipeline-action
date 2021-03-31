@@ -61,7 +61,7 @@ RESPONSE=$(
 )
 
 echo ""
-BUILD_URL=$($RESPONSE | jq --raw-output ".web_url")
+BUILD_URL=$(echo "$RESPONSE" | jq --raw-output ".web_url")
 echo "Build created:"
 echo "$BUILD_URL"
 
