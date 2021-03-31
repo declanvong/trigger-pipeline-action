@@ -61,12 +61,8 @@ RESPONSE=$(
 )
 
 echo ""
+BUILD_URL=$($RESPONSE | jq --raw-output ".web_url")
 echo "Build created:"
-echo "$RESPONSE" | jq --raw-output ".web_url"
+echo "$BUILD_URL"
 
-# Save output for downstream actions
-echo "${RESPONSE}" > "${HOME}/${GITHUB_ACTION}.json"
-
-echo ""
-echo "Saved build JSON to:"
-echo "${HOME}/${GITHUB_ACTION}.json"
+echo "::set-output name=BUILD_URL::$BUILD_URL"
